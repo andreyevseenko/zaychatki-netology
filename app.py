@@ -44,13 +44,14 @@ def test():
     skills = f.read().split(";")
     f.close()
 
+    file = open("./static/DATASET.csv")
+    reader = csv.reader(file, delimiter=';')
+    rows = []
+    for temp_row in reader:
+        rows.append(temp_row)
+    file.close()
+
     if request.values.get('model') != '0':
-        file = open("./static/DATASET.csv")
-        reader = csv.reader(file, delimiter=';')
-        rows = []
-        for temp_row in reader:
-            rows.append(temp_row)
-        file.close()
         my_skills = request.values.get('skills').split(",")
         my_skills_without_spaces = []
         for i in my_skills:
@@ -63,8 +64,8 @@ def test():
         for i in rows:
             for j in i[:1]:
                 if float(j) == best_vacancy:
-                    print(i[1:])
                     found_skills = i[1:]
+                    break
         result = ""
         for i in found_skills:
             if float(i) != 1.0:
@@ -78,7 +79,7 @@ def test():
 
     model = load_model("model")
 
-    my_skills = request.values.get('skills').split(",")
+    my_skills = request.values.get('skills').upper().split(",")
     my_skills_without_spaces = []
     for i in my_skills:
         my_skills_without_spaces.append(i.strip(" "))
@@ -93,7 +94,7 @@ def test():
             prepared_skills[0].append(skills.index(i) / SKLS_COUNT)
 
     preds = model.predict(prepared_skills)
-    return render_template('result.html', spec=specialties[round(preds[0][0] * SPEC_COUNT)], skls="TEST")
+    return render_template('result.html', spec=specialties[round(preds[0][0] * SPEC_COUNT)], skls="UNDER CONSTRUCTION")
 
 
 if __name__ == '__main__':
