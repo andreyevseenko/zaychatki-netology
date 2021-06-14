@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Узнай направление развития</title>
+  <style type="text/css">
+  @font-face {
+    font-family: "Courier10 BT [Rus by me] Roman"; /* Гарнитура шрифта */
+    src: url(./static/font.otf); /* Путь к файлу со шрифтом */
+   }
+   body{font-family: "Courier10 BT [Rus by me] Roman";}
+   #content {
+    margin: 0 auto 50px; /* Выравнивание по центру */
+	text-align: center;
+	background: #fff; /* Цвет фона */
+	padding: 20px;
+   }
+   #footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    background: #fff; /* Цвет фона */
+    color: #000; /* Цвет текста */
+    width: 100%; /* Ширина слоя */
+   }
+   #skills {
+    width: 500px;
+	height: 30px;
+   }
+   #pole input {
+	
+   }
+   #btn {
+	height: 35px;
+   }
+  </style>
+ </head>
+ <body>
+  <div id="content">
+   <img src="../static/zaychatki.png"></img>
+   <h1>Узнай направление развития</h1>
+   <h2>Введи свои навыки через запятую:</h2>
+   <form>
+   <div id="pole"><input id="skills" name="skills"><input id="btn" type="submit" value="Узнать" formaction="/test" formmethod="get"></div>
+   <p>Выберите модель: <input name="model" type="radio" value="0" checked> Нейросеть <input name="model" type="radio" value="1"> Скоринговая модель</p>
+    </form>
+  </div>
+   <div id="footer">Специально для <a href="https://moscityhack.innoagency.ru/">Moscow City Hack</a></div>
+ </body>
+</html>
